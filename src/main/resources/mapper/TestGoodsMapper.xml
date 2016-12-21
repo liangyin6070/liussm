@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.shiny.crm.web.mobile.dao.TestGoodsMapper" >
+  <resultMap id="BaseResultMap" type="com.shiny.crm.web.mobile.entity.TestGoods" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="goods_num" property="goodsNum" jdbcType="VARCHAR" />
+    <result column="goods_name" property="goodsName" jdbcType="VARCHAR" />
+    <result column="goods_spec" property="goodsSpec" jdbcType="VARCHAR" />
+    <result column="unit" property="unit" jdbcType="VARCHAR" />
+    <result column="market_price" property="marketPrice" jdbcType="DECIMAL" />
+    <result column="static_price" property="staticPrice" jdbcType="DECIMAL" />
+    <result column="is_discount" property="isDiscount" jdbcType="BIT" />
+    <result column="goods_sum" property="goodsSum" jdbcType="INTEGER" />
+    <result column="publish_date" property="publishDate" jdbcType="DATE" />
+    <result column="publish_status" property="publishStatus" jdbcType="BIT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, goods_num, goods_name, goods_spec, unit, market_price, static_price, is_discount, 
+    goods_sum, publish_date, publish_status
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from test_goods
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from test_goods
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.shiny.crm.web.mobile.entity.TestGoods" >
+    insert into test_goods (id, goods_num, goods_name, 
+      goods_spec, unit, market_price, 
+      static_price, is_discount, goods_sum, 
+      publish_date, publish_status)
+    values (#{id,jdbcType=INTEGER}, #{goodsNum,jdbcType=VARCHAR}, #{goodsName,jdbcType=VARCHAR}, 
+      #{goodsSpec,jdbcType=VARCHAR}, #{unit,jdbcType=VARCHAR}, #{marketPrice,jdbcType=DECIMAL}, 
+      #{staticPrice,jdbcType=DECIMAL}, #{isDiscount,jdbcType=BIT}, #{goodsSum,jdbcType=INTEGER}, 
+      #{publishDate,jdbcType=DATE}, #{publishStatus,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.shiny.crm.web.mobile.entity.TestGoods" >
+    insert into test_goods
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="goodsNum != null" >
+        goods_num,
+      </if>
+      <if test="goodsName != null" >
+        goods_name,
+      </if>
+      <if test="goodsSpec != null" >
+        goods_spec,
+      </if>
+      <if test="unit != null" >
+        unit,
+      </if>
+      <if test="marketPrice != null" >
+        market_price,
+      </if>
+      <if test="staticPrice != null" >
+        static_price,
+      </if>
+      <if test="isDiscount != null" >
+        is_discount,
+      </if>
+      <if test="goodsSum != null" >
+        goods_sum,
+      </if>
+      <if test="publishDate != null" >
+        publish_date,
+      </if>
+      <if test="publishStatus != null" >
+        publish_status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="goodsNum != null" >
+        #{goodsNum,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsName != null" >
+        #{goodsName,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsSpec != null" >
+        #{goodsSpec,jdbcType=VARCHAR},
+      </if>
+      <if test="unit != null" >
+        #{unit,jdbcType=VARCHAR},
+      </if>
+      <if test="marketPrice != null" >
+        #{marketPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="staticPrice != null" >
+        #{staticPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="isDiscount != null" >
+        #{isDiscount,jdbcType=BIT},
+      </if>
+      <if test="goodsSum != null" >
+        #{goodsSum,jdbcType=INTEGER},
+      </if>
+      <if test="publishDate != null" >
+        #{publishDate,jdbcType=DATE},
+      </if>
+      <if test="publishStatus != null" >
+        #{publishStatus,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shiny.crm.web.mobile.entity.TestGoods" >
+    update test_goods
+    <set >
+      <if test="goodsNum != null" >
+        goods_num = #{goodsNum,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsName != null" >
+        goods_name = #{goodsName,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsSpec != null" >
+        goods_spec = #{goodsSpec,jdbcType=VARCHAR},
+      </if>
+      <if test="unit != null" >
+        unit = #{unit,jdbcType=VARCHAR},
+      </if>
+      <if test="marketPrice != null" >
+        market_price = #{marketPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="staticPrice != null" >
+        static_price = #{staticPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="isDiscount != null" >
+        is_discount = #{isDiscount,jdbcType=BIT},
+      </if>
+      <if test="goodsSum != null" >
+        goods_sum = #{goodsSum,jdbcType=INTEGER},
+      </if>
+      <if test="publishDate != null" >
+        publish_date = #{publishDate,jdbcType=DATE},
+      </if>
+      <if test="publishStatus != null" >
+        publish_status = #{publishStatus,jdbcType=BIT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shiny.crm.web.mobile.entity.TestGoods" >
+    update test_goods
+    set goods_num = #{goodsNum,jdbcType=VARCHAR},
+      goods_name = #{goodsName,jdbcType=VARCHAR},
+      goods_spec = #{goodsSpec,jdbcType=VARCHAR},
+      unit = #{unit,jdbcType=VARCHAR},
+      market_price = #{marketPrice,jdbcType=DECIMAL},
+      static_price = #{staticPrice,jdbcType=DECIMAL},
+      is_discount = #{isDiscount,jdbcType=BIT},
+      goods_sum = #{goodsSum,jdbcType=INTEGER},
+      publish_date = #{publishDate,jdbcType=DATE},
+      publish_status = #{publishStatus,jdbcType=BIT}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
