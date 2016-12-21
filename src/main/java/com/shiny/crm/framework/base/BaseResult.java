@@ -14,6 +14,7 @@ import java.io.Serializable;
 public class BaseResult<T> implements Serializable {
 
 
+	
 	private static final long serialVersionUID = -4185151304730685014L;
 
 	private boolean success;
