@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.shiny.crm.web.mobile.dao.TestGoodsMapper" >
+  <cache type="org.mybatis.caches.ehcache.LoggingEhcache" >  
+    <property name="timeToIdleSeconds" value="3600"/><!--1 hour-->  
+    <property name="timeToLiveSeconds" value="3600"/><!--1 hour-->  
+    <property name="maxEntriesLocalHeap" value="1000"/>  
+    <property name="maxEntriesLocalDisk" value="10000000"/>  
+    <property name="memoryStoreEvictionPolicy" value="LRU"/>  
+</cache>
   <resultMap id="BaseResultMap" type="com.shiny.crm.web.mobile.entity.TestGoods" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="goods_num" property="goodsNum" jdbcType="VARCHAR" />
@@ -18,7 +25,7 @@
     id, goods_num, goods_name, goods_spec, unit, market_price, static_price, is_discount, 
     goods_sum, publish_date, publish_status
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" useCache="false">
     select 
     <include refid="Base_Column_List" />
     from test_goods
